@@ -1,0 +1,45 @@
+<img class="rounded mx-auto d-block" width="300" alt="Angular Logo"
+src="http://todomvc.com/site-assets/logo-icon.png">
+
+<div class="container">
+
+<input type="text" class="todo-input" placeholder="What need to be done">
+
+<div class="todo-item">
+    <div class="todo-item-left">
+        <input type="checkbox" v-model="todo.completed">
+        <div class="todo-item-label"> Todo item goes here</div>
+    </div>
+    <div class="remove-item">
+        &times;
+    </div>
+</div>
+
+<div class="todo-item">
+    <div class="todo-item-left">
+        <input type="checkbox" v-model="todo.completed">
+        <div class="todo-item-label"> Another Item</div>
+    </div>
+    <div class="remove-item">
+        &times;
+    </div>
+</div>
+
+<div class="extra-container">
+    <div><label><input type="checkbox"> Check All</label></div>
+    <div> 4 Items left</div>
+</div>
+
+<div class="extra-container">
+    <div>
+        <button class="active">All</button>
+        <button>Active</button>
+        <button>Completed</button>
+    </div>
+
+    <div>
+        <button>Clear Completed</button>
+    </div>
+</div>
+
+</div>
