@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoListComponent implements OnInit {
   todoTitle: string = '';
+  idForTodo: number = 0;
   todos : object[] = [];
   constructor() { }
 
   ngOnInit(): void {
+    this.idForTodo = 4;
     this.todoTitle = '';
     this.todos = [
       {
@@ -34,13 +36,21 @@ export class TodoListComponent implements OnInit {
     ];
   }
 
-  addTodo(){
+  addTodo(): void{
+    if(this.todoTitle.trim().length === 0){
+      return;
+    }
+
     this.todos.push({
-      id: 4,
+      id: this.idForTodo,
       title: this.todoTitle,
       completed:false,
       editing:false
     })
-  }
 
+    //Clear input and increment IDS
+    this.todoTitle = '';
+    this.idForTodo++;
+  
+  }
 }
