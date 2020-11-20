@@ -36,6 +36,7 @@ export class TodoListComponent implements OnInit {
     ];
   }
 
+  //Adding todos
   addTodo(): void{
     if(this.todoTitle.trim().length === 0){
       return;
@@ -52,5 +53,10 @@ export class TodoListComponent implements OnInit {
     this.todoTitle = '';
     this.idForTodo++;
   
+  }
+
+  //Delete Todos using filter function to create a new todos array without Id passed on parametre
+  deleteTodo(id: number): void{
+    this.todos = this.todos.filter(todo => todo.id !== id);
   }
 }
