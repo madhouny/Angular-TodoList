@@ -10,9 +10,12 @@ export class TodoListComponent implements OnInit {
   todoTitle: string = '';
   idForTodo: number = 0;
   todos : Todo[] = [];
+  beforeEditCache :string = '';
+
   constructor() { }
 
   ngOnInit(): void {
+    this.beforeEditCache = '';
     this.idForTodo = 4;
     this.todoTitle = '';
     this.todos = [
@@ -50,16 +53,38 @@ export class TodoListComponent implements OnInit {
       editing:false
     })
 
-    //Clear input and increment IDS
+  //Clear input and increment IDS
     this.todoTitle = '';
     this.idForTodo++;
   
   }
 
+  // Edit Todo by Double Click
+    editTodo(todo: Todo) : void{
+      this.beforeEditCache = todo.title;
+      todo.editing = true;
+    }
+
+    doneEdit(todo:Todo):void{
+
+      //case Of empty String
+      if(todo.title.trim().length === 0){
+        todo.title = this.beforeEditCache;
+      }
+
+      todo.editing = false;
+    }
+
+    // Cancel edit when we tap Echap
+    cancelEdit(todo:Todo):void{
+      todo.title = this.beforeEditCache;
+      todo.editing = false;
+    }
+
   //Delete Todos using filter function to create a new todos array without Id passed on parametre
-  deleteTodo(id: number): void{
-    this.todos = this.todos.filter(todo => todo.id !== id);
-  }
+    deleteTodo(id: number): void{
+     this.todos = this.todos.filter(todo => todo.id !== id);
+    }
 }
 
 
