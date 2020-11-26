@@ -85,6 +85,28 @@ export class TodoListComponent implements OnInit {
     deleteTodo(id: number): void{
      this.todos = this.todos.filter(todo => todo.id !== id);
     }
+
+  //update Items left
+    remaining(): number {
+      return this.todos.filter(todo => !todo.completed).length;
+    }
+
+  //Display or not Clear Completed button
+  atLeastOneItemCompleted() : boolean{
+    return this.todos.filter(todo => todo.completed).length> 0;
+  }
+
+  //Clear Completed button functionnality
+  clearCompleted() :void{
+    this.todos = this.todos.filter(todo => !todo.completed);
+  }
+
+  //Check All Items button functionnality
+  clearAllTodos() :void{
+    this.todos.forEach(todo => todo.completed = 
+      (<HTMLInputElement> event?.target).checked)
+  }
+
 }
 
 
