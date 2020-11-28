@@ -23,11 +23,11 @@ import { Todo } from '../../interfaces/todo';
   ]
 })
 export class TodoListComponent implements OnInit {
-  todoTitle: string = '';
-  idForTodo: number = 0;
-  todos : Todo[] = [];
-  beforeEditCache :string = '';
-  filter: string = '';
+  todoTitle!: string;
+  idForTodo!: number;
+  todos!: Todo[];
+  beforeEditCache! :string;
+  filter!: string;
 
   constructor() { }
 
