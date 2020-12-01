@@ -8,6 +8,10 @@ import { AppComponent } from './app.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
 
+import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,8 +22,10 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule
-   
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase, 'Todo-Miashs'),
+    AngularFirestoreModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

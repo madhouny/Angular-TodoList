@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Todo } from '../interfaces/todo';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } 
+from 'angularfire2/firestore';
+import { Observable } from 'rxjs';
+
 
 @Injectable({ 
   providedIn: 'root'
@@ -11,28 +15,19 @@ export class TodoService {
   beforeEditCache :string = '';
   filter: string = 'all';
   anyRemainingModel: boolean = true;
-  todos: Todo[] = [
-    {
-      'id': 1,
-      'title': 'Finish Angular Screencast',
-      'completed': false,
-      'editing':false 
-    },
-    {
-      'id': 2,
-      'title': 'Take over world',
-      'completed': false,
-      'editing':false 
-    },
-    {
-      'id': 3,
-      'title': 'One more thing',
-      'completed': false,
-      'editing':false 
-    },
-  ];
+  todosCollection!: AngularFirestoreCollection<Todo>;
+  todos: Todo[] = [];
 
-  constructor() { }
+  constructor(public afs: AngularFirestore ) {
+    this.todos = this.getTodos();
+   }
+
+
+   getTodos(): any{
+    this.afs.collection('Todos').valueChanges().subscribe((res:any) =>{
+      this.todos = res;
+    });
+   }
 
   //Adding todos
   addTodo(todoTitle:string): void{
