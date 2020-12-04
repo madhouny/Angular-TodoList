@@ -11,34 +11,74 @@ import { Observable } from 'rxjs';
 export class TodoService {
 
   todoTitle: string='';
-  idForTodo: number= 1;
+  idForTodo: number= 0;
   beforeEditCache :string = '';
   filter: string = 'all';
   anyRemainingModel: boolean = true;
-  todosCollection!: AngularFirestoreCollection<Todo>;
-  todoDoc!: AngularFirestoreDocument<Todo>;
+  //todosCollection!: AngularFirestoreCollection<Todo>;
+  //todoDoc!: AngularFirestoreDocument<Todo>;
+
   todos: Todo[] = [];
   
 
-  constructor(public afs: AngularFirestore ) {
-    this.todosCollection = this.afs.collection('Todos');
-    this.todos = this.getTodos();
+  constructor() {
+    // recuperer les todos via localStorage
+    this.todos = JSON.parse(localStorage.getItem('todos')|| '{}');
+    this.idForTodo++;
+
+    // Initialisation with firebase
+    /*
+     this.todosCollection = this.afs.collection('Todos');
+     this.todos = this.getTodos();
+     */
    }
  
    // Get Todos from Firebase
+   /*
    getTodos(): any{
     this.afs.collection('Todos').valueChanges().subscribe((res:any) =>{
       this.todos = res; 
     });
-   }
+   }*/
 
   
-  //Adding todos
+  //Adding todos with firebase
+  /*
   addTodo(todo:Todo) {
       todo.id = this.idForTodo;
       this.todosCollection.add(todo);
       this.idForTodo++;
     }
+    */
+
+ 
+
+  //Add Todos with LocalStorage
+  addTodo(todoTitle:string): void{
+    if(todoTitle.trim().length === 0){
+      return;
+    }
+    
+    if(localStorage.getItem('todos') == null){
+      
+      this.todos.push({
+      id: this.idForTodo,
+      title: todoTitle,
+      completed:false,
+      editing:false
+    })
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+    } else{
+      this.todos = JSON.parse(localStorage.getItem('todos')|| '{}');
+      this.todos.push({
+        id: this.idForTodo,
+        title: todoTitle,
+        completed:false,
+        editing:false
+      })
+      localStorage.setItem('todos', JSON.stringify(this.todos));
+    }
+  }
   
 
   // Edit Todo by Double Click
@@ -47,6 +87,7 @@ export class TodoService {
       todo.editing = true;
     }
 
+    // Upgrade Todos with localStorage
     doneEdit(todo:Todo):void{
 
       //case Of empty String
@@ -56,6 +97,7 @@ export class TodoService {
       
       this.anyRemainingModel = this.anyRemaining();
       todo.editing = false;
+      localStorage.setItem('todos', JSON.stringify(this.todos));
     }
 
     // Cancel edit when we tap Echap
@@ -64,9 +106,10 @@ export class TodoService {
       todo.editing = false;
     }
 
-  //Delete Todos using filter function to create a new todos array without Id passed on parametre
+  //Delete Todos  using filter function to create a new todos array without Id passed on parametre
     deleteTodo(id:number){
        this.todos = this.todos.filter((todo)=>todo.id !== id)
+       localStorage.setItem('todos', JSON.stringify(this.todos));
       // this.todoDoc = this.afs.doc(`Todos/${id}`);
       // this.todoDoc.delete();
 

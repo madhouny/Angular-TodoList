@@ -25,13 +25,13 @@ import { Todo } from '../../interfaces/todo';
   ]
 })
 export class TodoListComponent implements OnInit {
-   
-   todos:Todo ={
-     id:1,
-     title:'',
-     completed:false,
-     editing:false
-   }
+  todoTitle!: string;
+  //  todos:Todo ={
+  //    id:1,
+  //    title:'',
+  //    completed:false,
+  //    editing:false
+  //  }
 
   constructor(public todoService: TodoService) { }
 
@@ -39,17 +39,29 @@ export class TodoListComponent implements OnInit {
      
   }
 
-  //Adding todos
   addTodo(): void{
-    if(this.todos.title.trim().length === 0){
+    if(this.todoTitle.trim().length === 0){
       return;
     }
 
+    this.todoService.addTodo(this.todoTitle);
+    this.todoTitle = '';
+    
 
-    this.todoService.addTodo(this.todos);
-    this.todos.title = '';
-    this.todos.id++ ;
   }
+
+
+  //Adding todos with firebase
+  // addTodo(): void{
+  //   if(this.todos.title.trim().length === 0){
+  //     return;
+  //   }
+
+
+  //   this.todoService.addTodo(this.todos);
+  //   this.todos.title = '';
+  //   this.todos.id++ ;
+  // }
 
 }
 
