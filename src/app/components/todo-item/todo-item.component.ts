@@ -15,7 +15,7 @@ export class TodoItemComponent implements OnInit {
   
   constructor(public todoService: TodoService) { }
   
-  ngOnInit(): void {
+  ngOnInit(): void { 
   }
 
 }

@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     FormsModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase, 'Todo-Miashs'),
-    AngularFirestoreModule
+    AngularFirestoreModule,
     
   ],
   providers: [],

@@ -11,41 +11,35 @@ import { Observable } from 'rxjs';
 export class TodoService {
 
   todoTitle: string='';
-  idForTodo: number= 4;
+  idForTodo: number= 1;
   beforeEditCache :string = '';
   filter: string = 'all';
   anyRemainingModel: boolean = true;
   todosCollection!: AngularFirestoreCollection<Todo>;
+  todoDoc!: AngularFirestoreDocument<Todo>;
   todos: Todo[] = [];
+  
 
   constructor(public afs: AngularFirestore ) {
+    this.todosCollection = this.afs.collection('Todos');
     this.todos = this.getTodos();
    }
-
-
+ 
+   // Get Todos from Firebase
    getTodos(): any{
     this.afs.collection('Todos').valueChanges().subscribe((res:any) =>{
-      this.todos = res;
+      this.todos = res; 
     });
    }
 
-  //Adding todos
-  addTodo(todoTitle:string): void{
-    if(todoTitle.trim().length === 0){
-      return;
-    }
-
-    this.todos.push({
-      id: this.idForTodo,
-      title: todoTitle,
-      completed:false,
-      editing:false
-    })
-
-  //Clear input and increment IDS
-    this.idForTodo++;
   
-  }
+  //Adding todos
+  addTodo(todo:Todo) {
+      todo.id = this.idForTodo;
+      this.todosCollection.add(todo);
+      this.idForTodo++;
+    }
+  
 
   // Edit Todo by Double Click
     editTodo(todo: Todo) : void{
@@ -59,6 +53,7 @@ export class TodoService {
       if(todo.title.trim().length === 0){
         todo.title = this.beforeEditCache;
       }
+      
       this.anyRemainingModel = this.anyRemaining();
       todo.editing = false;
     }
@@ -70,8 +65,11 @@ export class TodoService {
     }
 
   //Delete Todos using filter function to create a new todos array without Id passed on parametre
-    deleteTodo(id: number): void{
-     this.todos = this.todos.filter(todo => todo.id !== id);
+    deleteTodo(id:number){
+       this.todos = this.todos.filter((todo)=>todo.id !== id)
+      // this.todoDoc = this.afs.doc(`Todos/${id}`);
+      // this.todoDoc.delete();
+
     }
 
   //update Items left
