@@ -24,8 +24,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebase, 'Todo-Miashs'),
-    AngularFirestoreModule,
+    // AngularFireModule.initializeApp(environment.firebase, 'Todo-Miashs'),
+    // AngularFirestoreModule,
     
   ],
   providers: [],
