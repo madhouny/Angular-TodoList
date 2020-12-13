@@ -78,6 +78,7 @@ export class TodoService {
       })
       localStorage.setItem('todos', JSON.stringify(this.todos));
     }
+    this.idForTodo++;
   }
   
 
