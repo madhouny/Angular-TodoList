@@ -59,9 +59,9 @@ Le système d'animation d'Angular repose sur la fonctionnalité CSS, ce qui sign
 Firebase est un ensemble de services d'hébergement pour n'importe quel type d'application (Android, iOS, Javascript, Node.js, Java, Unity, PHP, C++ ...). Il propose d'héberger en NoSQL et en temps réel des bases de données, du contenu, de l'authentification sociale (Google, Facebook, Twitter et Github), et des notifications, ou encore des services, tel que par exemple un serveur de communication temps réel.
 
 - Pour Procéder a utiliser Firebase :
- a- npm install --save firebase angularfire2
- b- créer un projet  Firebase Console et Configurer Firestore l'endroit où les taches sont sauvegarder et récuperer.
- c- ajouter la configuration Firebase de l'application Web à notre projet, dans le dossier Environnement, A Coller dans le fichier envirnnement.ts : 
+-  a- npm install --save firebase angularfire2
+-  b- créer un projet  Firebase Console et Configurer Firestore l'endroit où les taches sont sauvegarder et récuperer.
+-  c- ajouter la configuration Firebase de l'application Web à notre projet, dans le dossier Environnement, A Coller dans le fichier envirnnement.ts : 
  
   export const environment = {
   production: false,
@@ -76,12 +76,12 @@ Firebase est un ensemble de services d'hébergement pour n'importe quel type d'a
   }
 };
 
-d- Importer ces trois modules dans le fichier App.Module.ts : 
+- d- Importer ces trois modules dans le fichier App.Module.ts : 
     import { environment } from '../environments/environment';
     import { AngularFireModule } from 'angularfire2';
     import { AngularFirestoreModule } from 'angularfire2/firestore';  
 
-Aprés avoir faire tout les étapes ci dessus, il faut injecter dans le Constructeur de Service l'instance de type Firestore:  public afs: AngularFirestore 
+- Aprés avoir faire tout les étapes ci dessus, il faut injecter dans le Constructeur de Service l'instance de type Firestore:  public afs: AngularFirestore 
 pour ensuite intéragir avec Les Collections de Firestore depuis notre projet.
 
 # LocalStorage fonctionnalité
