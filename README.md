@@ -99,5 +99,10 @@ Pour Sauvegarder nos données localement, voici les petits bout de code à insé
       - value = 'https://github.com/madhouny/Angular-TodoList';
       
   - enfin pour utiliser QrCode nous auront besoin de la balise suivante: 
-    - <ngx-qrcode>.. </ngx-qrcode>
+    - <ngx-qrcode
+        [elementType]="elementType"
+        [errorCorrectionLevel]="correctionLevel"
+        [value]="value"
+        cssClass="bshadow">
+     </ngx-qrcode>
 
