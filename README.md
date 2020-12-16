@@ -92,11 +92,12 @@ Pour Sauvegarder nos données localement, voici les petits bout de code à insé
  
  # QrCode fonctionnalité
  l'objectif de cette fonctionnalité est de pouvoir avoir accés a mon github a partir d'un QrCode.
- - pour integrer la librairie de QrCode a notre projet, voici la commande utilisé : npm install @techiediaries/ngx-qrcode
- - et pour configurer notre QrCode, on se place sur notre composant Parent et on injecte ce bout de code: 
-       elementType = NgxQrcodeElementTypes.URL;
-      correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
-      value = 'https://github.com/madhouny/Angular-TodoList';
+ - Pour integrer la librairie de QrCode a notre projet, voici la commande utilisé : npm install @techiediaries/ngx-qrcode
+ - Pour configurer notre QrCode, on se place sur notre composant Parent et on injecte ce bout de code: 
+      - elementType = NgxQrcodeElementTypes.URL;
+      - correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
+      - value = 'https://github.com/madhouny/Angular-TodoList';
       
-  - enfin pour utiliser QrCode nous auront besoin de la balise suivante: <ngx-qrcode>.. </ngx-qrcode>
+  - enfin pour utiliser QrCode nous auront besoin de la balise suivante: 
+    - <ngx-qrcode>.. </ngx-qrcode>
 
