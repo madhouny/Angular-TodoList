@@ -3,13 +3,14 @@ src="http://todomvc.com/site-assets/logo-icon.png">
 
 <div class="container">
 
+    <!-- QrCode fonctionnalité -->
     <ngx-qrcode
         [elementType]="elementType"
         [errorCorrectionLevel]="correctionLevel"
         [value]="value"
         cssClass="bshadow">
     </ngx-qrcode>
-    <span>QrCode vers mon Github</span>
+    <span style="color:blue">QrCode vers mon Github</span>
   <!-- <textarea [(ngModel)] = "value"></textarea> -->
 </div>
 <br>

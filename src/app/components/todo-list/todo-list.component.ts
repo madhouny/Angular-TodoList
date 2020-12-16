@@ -27,9 +27,10 @@ import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiedi
 })
 export class TodoListComponent implements OnInit {
 
+  //QrCode Fonctionnalité
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
-  value = 'https://github.com/madhouny/Angular-TodoList';
+  value = 'https://github./madhouny/Angular-TodoList';
 
   todoTitle!: string;
   //  todos:Todo ={
