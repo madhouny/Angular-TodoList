@@ -89,4 +89,20 @@ Dans un deuxieme temps, La version Final de notre  Projet va dependre de cette f
 Pour Sauvegarder nos données localement, voici les petits bout de code à insérer dans les différent fonctions du CRUD : 
  - localStorage.setItem('todos', JSON.stringify(this.todos)); => lors de l'ajout et la modification
  - JSON.parse(localStorage.getItem('todos')|| '{}'); => lors de la récuperation des taches depuis le constructeur de Service.
+ 
+ # QrCode fonctionnalité
+ l'objectif de cette fonctionnalité est de pouvoir avoir accés a mon github a partir d'un QrCode.
+ - Pour integrer la librairie de QrCode a notre projet, voici la commande utilisé : npm install @techiediaries/ngx-qrcode
+ - Pour configurer notre QrCode, on se place sur notre composant Parent et on injecte ce bout de code: 
+      - elementType = NgxQrcodeElementTypes.URL;
+      - correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
+      - value = 'https://github.com/madhouny/Angular-TodoList';
+      
+  - enfin pour utiliser QrCode nous auront besoin de la balise suivante: 
+    - <ngx-qrcode
+        [elementType]="elementType"
+        [errorCorrectionLevel]="correctionLevel"
+        [value]="value"
+        cssClass="bshadow">
+     </ngx-qrcode>
 
