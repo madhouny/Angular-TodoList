@@ -12,6 +12,8 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
+    NgxQRCodeModule,
     // AngularFireModule.initializeApp(environment.firebase, 'Todo-Miashs'),
     // AngularFirestoreModule,
     

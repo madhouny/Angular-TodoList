@@ -2,6 +2,7 @@ import { animate, animation, style, transition, trigger } from '@angular/animati
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';
 import { Todo } from '../../interfaces/todo';
+import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
 
 @Component({
   selector: 'todo-list',
@@ -25,6 +26,11 @@ import { Todo } from '../../interfaces/todo';
   ]
 })
 export class TodoListComponent implements OnInit {
+
+  elementType = NgxQrcodeElementTypes.URL;
+  correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
+  value = 'https://github.com/madhouny/Angular-TodoList';
+
   todoTitle!: string;
   //  todos:Todo ={
   //    id:1,
